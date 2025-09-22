@@ -32,19 +32,6 @@ header img {
   display: block;
 }
 
-/* Place the logo fixed at the top center of the viewport */
-.site-logo {
-  position: fixed;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-  width: 120px;
-}
-
-/* Add top padding to header so content isn't hidden under the fixed logo */
-header { padding-top: 4.25rem; }
-
 header h1 {
   font-size: 2.2rem;
   color: #ffffff;
