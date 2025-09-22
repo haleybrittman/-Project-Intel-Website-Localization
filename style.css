@@ -32,6 +32,19 @@ header img {
   display: block;
 }
 
+/* Place the logo fixed at the top center of the viewport */
+.site-logo {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 120px;
+}
+
+/* Add top padding to header so content isn't hidden under the fixed logo */
+header { padding-top: 4.25rem; }
+
 header h1 {
   font-size: 2.2rem;
   color: #ffffff;
@@ -176,6 +189,124 @@ footer, body > p:last-of-type {
   font-size: 1.05rem;
   color: #333;
 }
+
+/* Subscription card styles */
+.subscribe-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), #ffffff);
+  box-shadow: 0 8px 30px rgba(8,32,63,0.08);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* Increase inner spacing of the subscribe card */
+.subscribe-card {
+  padding: 1.25rem; /* default padding */
+}
+
+@media (min-width: 768px) {
+  .subscribe-card { padding: 2rem; }
+}
+
+/* Center and constrain the controls inside the subscribe card */
+.subscribe-controls {
+  width: 100%;
+  max-width: 28rem; /* controls won't stretch too wide */
+}
+.subscribe-controls .input-group, .subscribe-controls .d-grid { width: 100%; }
+.subscribe-controls.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* Center the input+button as a compact inline group on wider screens */
+.subscribe-controls .input-group {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Make input and button responsive: input grows, button stays its size */
+.subscribe-controls .input-group .form-control { flex: 1 1 18rem; max-width: 22rem; }
+.subscribe-controls .input-group .btn { flex: 0 0 auto; }
+
+@media (max-width: 576px) {
+  .subscribe-controls .input-group { display: flex; flex-direction: column; }
+  .subscribe-controls .input-group .form-control,
+  .subscribe-controls .input-group .btn { width: 100%; }
+}
+
+/* Center the subscribe section in the viewport on larger screens */
+#subscribe {
+  display: flex;
+  align-items: center; /* vertical centering */
+  justify-content: center; /* horizontal centering */
+}
+
+@media (min-width: 768px) {
+  #subscribe { min-height: 40vh; }
+}
+
+/* Make the inner row and column center their content so the whole block is centered */
+#subscribe > .row { height: 100%; }
+#subscribe .col-12.col-md-8.col-lg-6 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-subscribe {
+  padding: 0.65rem 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Center privacy notice inside subscribe card */
+.privacy {
+  text-align: center;
+  width: 100%;
+}
+
+/* Center the invalid-feedback inside subscribe-controls */
+.subscribe-controls .invalid-feedback {
+  display: block; /* let it take up flow space when shown */
+  text-align: center;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* Make the input-group icon a bit tighter */
+.input-group-text svg {
+  vertical-align: middle;
+}
+
+/* RTL-friendly spacing — input-group-text sits on the start side by default and will flip under RTL Bootstrap */
+.input-group .form-control {
+  min-height: 48px;
+}
+
+/* Small screens: add breathing room */
+@media (max-width: 576px) {
+  .subscribe-card { padding: 1rem; }
+}
+
+/* Footer styles */
+.site-footer {
+  background: rgba(7, 57, 102, 0.05);
+  border-top: 1px solid rgba(0,0,0,0.04);
+  color: #0b2540;
+}
+
+.site-footer .footer-link {
+  color: #0b2540;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.site-footer .footer-link:hover,
+.site-footer .footer-link:focus {
+  text-decoration: underline;
+}
+
+/* Ensure spacing works in RTL (me-3 flips to ms-3 automatically in RTL build) */
+.site-footer .me-3 { margin-inline-end: 1rem; }
 
 /* Responsive: Stack cards vertically on small screens */
 @media (max-width: 900px) {
