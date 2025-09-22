@@ -141,6 +141,106 @@
       </p>
     </div>
   </section>
+
+
   <p>Scroll to view timeline | Hover over cards to learn more!</p>
+  
+  <!-- Subscription Form: Intel Sustainability Newsletter (Centered & Restyled) -->
+  <section id="subscribe" class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <form id="subscribe-form" class="subscribe-card p-4 rounded" aria-labelledby="subscribe-heading" novalidate>
+          <h2 id="subscribe-heading" class="h5 mb-2 text-center">Subscribe to Intel's Sustainability Newsletter</h2>
+          <p class="text-center text-muted small mb-3">Get updates on sustainability goals, progress, and news.</p>
+
+          <div id="subscribe-status" class="visually-hidden" aria-live="polite"></div>
+
+          <div class="subscribe-controls mx-auto">
+            <div class="input-group">
+              <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" aria-label="Email address" required autocomplete="email">
+              <button type="submit" class="btn btn-primary btn-subscribe">
+                <span class="spinner-border spinner-border-sm me-2 visually-hidden" role="status" aria-hidden="true"></span>
+                Subscribe
+              </button>
+            </div>
+            <div class="invalid-feedback">Please enter a valid email address.</div>
+          </div>
+
+          <p class="mt-3 mb-0 small text-muted privacy">We respect your privacy. Unsubscribe at any time.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Simple client-side validation and simulated submit (no network calls)
+    (function () {
+      var form = document.getElementById('subscribe-form');
+      if (!form) return;
+      var email = form.elements['email'];
+      var status = document.getElementById('subscribe-status');
+      var btn = form.querySelector('.btn-subscribe');
+      var spinner = btn && btn.querySelector('.spinner-border');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        // basic email regex
+        var value = email.value.trim();
+        var valid = /^\S+@\S+\.\S+$/.test(value);
+        if (!valid) {
+          email.classList.add('is-invalid');
+          email.focus();
+          return;
+        }
+        email.classList.remove('is-invalid');
+
+        // show spinner
+        if (spinner) spinner.classList.remove('visually-hidden');
+        btn.setAttribute('disabled', '');
+
+        // simulate async submission
+        setTimeout(function () {
+          if (spinner) spinner.classList.add('visually-hidden');
+          btn.removeAttribute('disabled');
+
+          // show accessible success message
+          status.classList.remove('visually-hidden');
+          status.textContent = 'Thanks — check your inbox to confirm your subscription.';
+          status.style.padding = '0.5rem';
+          status.style.borderRadius = '0.25rem';
+          status.style.marginBottom = '0.75rem';
+          status.style.color = '#155724';
+          status.style.backgroundColor = '#d4edda';
+
+          // reset form
+          form.reset();
+        }, 900);
+      });
+    })();
+  </script>
+  
+  <!-- Footer -->
+  <footer class="site-footer mt-5" role="contentinfo">
+    <div class="container py-4">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-6 text-center text-md-start mb-2 mb-md-0">
+          <small>&copy; <span id="year"></span> Intel Corporation. All rights reserved.</small>
+        </div>
+
+        <div class="col-12 col-md-6 text-center text-md-end">
+          <nav aria-label="Footer navigation">
+            <a href="#" class="footer-link me-3">Privacy Policy</a>
+            <a href="#" class="footer-link me-3">Terms of Use</a>
+            <a href="#" class="footer-link">Contact</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set copyright year
+    (function () { var y = new Date().getFullYear(); var el = document.getElementById('year'); if (el) el.textContent = y; })();
+  </script>
 </body>
 </html>
